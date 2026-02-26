@@ -1,0 +1,7 @@
+rss:
+  - name: "ITHome IT 之家 - 新闻中心"
+    type: "rss"
+    url: "https://www.ithome.com/rss/"
+    enabled: true
+    extra:
+      category: "tech"

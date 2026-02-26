@@ -6,7 +6,17 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "ingestion-engine",
+    "langchain",
+    "langchain-openai",
+    "tzdata>=2025.3",
 ]
+
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.uv.sources]
 ingestion-engine = { path = "../ingestion-engine" }

@@ -32,7 +32,9 @@ def main() -> None:
     # 3. 生成口语化脚本
     written = batch_write(kept_items)
 
-    # 4. 生成“音频”（当前为 txt 占位文件）
+    # 4. 对各个口播脚本进行编排
+
+    # 5. 生成“音频”（当前为 txt 占位文件）
     audio_paths = batch_synthesize(w.script for w in written)
 
     for w, p in zip(written, audio_paths):

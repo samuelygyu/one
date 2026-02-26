@@ -27,7 +27,8 @@ def filter_today(items: List[ContentItem]) -> List[ContentItem]:
         return []
 
     now_cn = datetime.now(CN_TZ)
-    yesterday_date = now_cn.date() - timedelta(days=1)
+    # yesterday_date = now_cn.date() - timedelta(days=1)
+    yesterday_date = now_cn #TODO 暂时使用今日
     start_cn = datetime.combine(yesterday_date, time(0, 0, 0), tzinfo=CN_TZ)
     end_cn = datetime.combine(yesterday_date, time(23, 59, 59), tzinfo=CN_TZ)
 
