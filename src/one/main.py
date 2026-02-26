@@ -1,9 +1,11 @@
+import asyncio
+
 from one.config import ensure_directories
 from one.chains.filter_chain import filter_and_rank
 from one.chains.writer_chain import batch_write
 from one.tools.audio_engine import batch_synthesize
-from one.tools.source_fetcher import fetch_latest_news
 from one.utils.logger import get_logger
+from ingestion_engine import run_ingestion
 
 
 def main() -> None:
@@ -12,8 +14,9 @@ def main() -> None:
 
     ensure_directories()
 
-    # 1. 抓取新闻
-    raw_items = fetch_latest_news()
+    # 1. 抓取新闻（通过 ingestion_engine）
+    ingestion_results = asyncio.run(run_ingestion())
+    raw_items = [item for r in ingestion_results for item in r.items]
     if not raw_items:
         logger.warning("No news items fetched, exit.")
         return
